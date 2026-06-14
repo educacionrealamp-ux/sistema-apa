@@ -45,7 +45,7 @@ if not st.session_state['logueado']:
                 st.session_state['logueado'] = True
                 st.session_state['user_info'] = user
                 st.rerun()
-        except Exception as e:
+            except Exception as e:
             st.error(f"Error técnico: {e}")
 
     with tab_recuperar:
