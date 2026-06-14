@@ -6,7 +6,7 @@ from firebase_admin import credentials, auth
 # --- CONFIGURACIÓN DE FIREBASE ---
 # REEMPLAZA ESTOS DATOS CON LOS DE TU CONSOLA DE FIREBASE
 firebaseConfig = {
-    "apiKey": "AIzaSyA3vLkE2v4LnqJA084ICmkyOfQhuoFuJA",
+    "apiKey": "AIzaSyA3vlKzE2v4LnqJAO84ICmkyOfQhuoFuJA",
     "authDomain": "apa-sistema-educativo.firebaseapp.com",
     "projectId": "apa-sistema-educativo",
     "storageBucket": "apa-sistema-educativo.firebasestorage.app",
