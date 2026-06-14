@@ -9,7 +9,7 @@ firebaseConfig = {
     "apiKey": "AIzaSyA3vLkE2v4LnqJA084ICmkyOfQhuoFuJA",
     "authDomain": "apa-sistema-educativo.firebaseapp.com",
     "projectId": "apa-sistema-educativo",
-    "storageBucket": "apa-sistema-educativo.appspot.com",
+    "storageBucket": "apa-sistema-educativo.firebasestorage.app",
     "messagingSenderId": "774126994405",
     "appId": "1:774126994405:web:be8ad590cbb9439eb7a50c",
     "databaseURL": "https://apa-sistema-educativo-default-rtdb.firebaseio.com"
