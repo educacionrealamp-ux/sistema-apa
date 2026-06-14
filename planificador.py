@@ -45,8 +45,8 @@ if not st.session_state['logueado']:
                 st.session_state['logueado'] = True
                 st.session_state['user_info'] = user
                 st.rerun()
-            except:
-                st.error("Correo o contraseña incorrectos.")
+        except Exception as e:
+            st.error(f"Error técnico: {e}")
 
     with tab_recuperar:
         email_recuperar = st.text_input("Ingresa tu correo para recuperar")
