@@ -6,12 +6,12 @@ from firebase_admin import credentials, auth
 # --- CONFIGURACIÓN DE FIREBASE ---
 # REEMPLAZA ESTOS DATOS CON LOS DE TU CONSOLA DE FIREBASE
 firebaseConfig = {
-    "apiKey": "TU_API_KEY_AQUI",
-    "authDomain": "TU_PROYECTO.firebaseapp.com",
-    "projectId": "TU_PROYECTO",
-    "storageBucket": "TU_PROYECTO.appspot.com",
-    "messagingSenderId": "TU_ID",
-    "appId": "TU_APP_ID"
+    "apiKey": "AIzaSyA3vLkE2v4LnqJA084ICmkyOfQhuoFuJA",
+    "authDomain": "apa-sistema-educativo.firebaseapp.com",
+    "projectId": "apa-sistema-educativo",
+    "storageBucket": "apa-sistema-educativo.firebasestorage.app",
+    "messagingSenderId": "774126994405",
+    "appId": "1:774126994405:web:be8ad590cbb9439eb7a50c"
 }
 
 firebase = pyrebase.initialize_app(firebaseConfig)
