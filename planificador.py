@@ -5,6 +5,7 @@ import pyrebase
 firebaseConfig = {
     "apiKey": "AlzaSyA3vlKzE2v4LnqJAO84ICmkyOfQhuoFuJA",
     "authDomain": "sistema-apa.firebaseapp.com",
+    "databaseURL": "https://sistema-apa-default-rtdb.firebaseio.com", # <--- ESTO ES LO QUE FALTABA
     "projectId": "sistema-apa",
     "storageBucket": "sistema-apa.appspot.com",
     "messagingSenderId": "910237730940",
