@@ -1,66 +1,46 @@
 import streamlit as st
-import pyrebase
-import firebase_admin
-from firebase_admin import credentials, auth
 
-# --- CONFIGURACIÓN DE FIREBASE ---
-# REEMPLAZA ESTOS DATOS CON LOS DE TU CONSOLA DE FIREBASE
-firebaseConfig = {
-    "apiKey": "AIzaSyA3vlKzE2v4LnqJAO84ICmkyOfQhuoFuJA",
-    "authDomain": "apa-sistema-educativo.firebaseapp.com",
-    "projectId": "apa-sistema-educativo",
-    "storageBucket": "apa-sistema-educativo.firebasestorage.app",
-    "messagingSenderId": "774126994405",
-    "appId": "1:774126994405:web:be8ad590cbb9439eb7a50c",
-    "databaseURL": "https://apa-sistema-educativo-default-rtdb.firebaseio.com"
-}
+st.set_page_config(page_title="APA - Motor de Planificación", layout="wide")
 
-firebase = pyrebase.initialize_app(firebaseConfig)
-auth_fire = firebase.auth()
-db = firebase.database()
+st.title("🚀 APA: Arquitectura Pedagógica Avanzada")
+st.subheader("Motor de Planificación - Unidad Educativa San Miguel de los Bancos")
 
-# --- CONFIGURACIÓN DE PÁGINA ---
-st.set_page_config(layout="wide", page_title="Arquitectura Pedagógica Avanzada")
-
-def centrar_logo():
-    col1, col2, col3 = st.columns([1, 2, 1])
+# --- Formulario de Entrada ---
+with st.form("form_planificacion"):
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        dcd = st.text_input("Ingresa la DCD (ej. M.4.1.28)")
+        curso = st.selectbox("Curso", ["8vo EGB", "9no EGB", "10mo EGB"])
+        tema = st.text_input("Tema de la clase")
+        
     with col2:
-        st.image("logo_apa.png", width=200)
+        # Checkbox para la flexibilidad del ENEIS
+        incluir_eneis = st.checkbox("¿Incluir inserción ENEIS en esta planificación?")
+        
+        dim_eneis = None
+        tema_eneis = None
+        
+        if incluir_eneis:
+            st.info("Configuración de Inserción")
+            dim_eneis = st.text_input("Dimensión de la inserción")
+            tema_eneis = st.text_input("Tema de la inserción")
 
-# --- LÓGICA DE SESIÓN ---
-if 'logueado' not in st.session_state:
-    st.session_state['logueado'] = False
+    submit_button = st.form_submit_button("Generar Planificación")
 
-if not st.session_state['logueado']:
-    centrar_logo()
-    st.title("Arquitectura Pedagógica Avanzada (APA)")
-    tab_login, tab_recuperar = st.tabs(["Iniciar sesión", "Recuperar contraseña"])
-    
-    with tab_login:
-        email = st.text_input("Correo electrónico")
-        password = st.text_input("Contraseña", type="password")
-        if st.button("Iniciar sesión"):
-            try:
-                user = auth_fire.sign_in_with_email_and_password(email, password)
-                st.session_state['logueado'] = True
-                st.session_state['user_info'] = user
-                st.rerun()
-            except Exception as e:
-                st.error(f"Error técnico: {e}")
-
-    with tab_recuperar:
-        email_recuperar = st.text_input("Ingresa tu correo para recuperar")
-        if st.button("Enviar correo"):
-            auth_fire.send_password_reset_email(email_recuperar)
-            st.success("Correo enviado.")
-else:
-    # --- MOTOR DE PLANIFICACIÓN (CONTENIDO PRIVADO) ---
-    st.title("Motor de Planificación")
-    correo_actual = st.session_state['user_info']['email']
-    st.write(f"Bienvenido, **{correo_actual}**")
-    
-    # ... (Aquí va todo tu código de formularios de planificación existente) ...
-
-    if st.sidebar.button("Cerrar sesión"):
-        st.session_state['logueado'] = False
-        st.rerun()
+# --- Lógica de Procesamiento ---
+if submit_button:
+    if not dcd or not tema:
+        st.error("Por favor, completa al menos la DCD y el tema.")
+    else:
+        st.success(f"Generando planificación para: {tema}")
+        
+        # Aquí es donde el motor APA procesará el formato
+        st.write("### Vista Previa de la Planificación")
+        st.write(f"**DCD:** {dcd}")
+        
+        if incluir_eneis:
+            st.warning(f"📌 **Inserción ENEIS:** {dim_eneis} - {tema_eneis}")
+        
+        st.markdown("---")
+        st.write("*(Aquí se integrará la lógica del formato que analizamos anteriormente)*")
