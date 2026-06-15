@@ -3,7 +3,7 @@ import pyrebase
 
 # --- Configuración de Firebase ---
 firebaseConfig = {
-    "apiKey": "AlzaSyA3vlKzE2v4LnqJAO84ICmkyOfQhuoFuJA",
+    "apiKey": "AIzaSyA3vlKzE2v4LnqJAO84ICmkyOfQhuoFuJA",
     "authDomain": "sistema-apa.firebaseapp.com",
     "databaseURL": "https://sistema-apa-default-rtdb.firebaseio.com", # <--- ESTO ES LO QUE FALTABA
     "projectId": "sistema-apa",
